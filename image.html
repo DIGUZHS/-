@@ -8,20 +8,86 @@
     <meta name="referrer" content="never">
     <meta name="renderer" content="webkit" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>小姐姐在线随机播放 - 小新API</title>
+    <title>小姐姐图片</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="http://q2.qlogo.cn/headimg_dl?dst_uin=2919408342&spec=100">
 </head>
 <body>
-  <section id="main">
-			 <img id="player" src="https://p2.a.yximgs.com/upic/2022/06/30/14/BMjAyMjA2MzAxNDQzMDhfMTk3NDkwNjA2OF83Nzk3MTM3NzY5Ml8xXzM=_ev2_Bfdeffb44ff712b5455eefd769ff0b901.jpg">	
+    <section id="main">
+			 <img id="player" onload="loaded()" controls autoplay webkit-playsinline playsinline></img>	
     </section>
-    <section id="buttons">
-	
-        <button id="next" onclick="javascript:location.reload()">下一个</button>
-	
-		<a href="">
-		<button id="qh">切换视频</button>
-			</a>
+    <section id="buttons" >
+        <a href="index.html"><button id="qh">视频</button></a>
+        <button id="next">下一个</button>
+		<!-- <a href="index.php?type=png">
+		<button id="qh">切换图片</button> -->
+        <button id="next">@DUSK.</button>
+	</a>
     </section>
+   	 <script>
+
+        
+        (function (window, document) {
+
+            window.onload=function(){
+            var player = get('player');
+            var url = 'https://api.xiao-xin.top/API/kuaishou_png.php?type=json'
+            var httpRequest = new XMLHttpRequest();//第一步：建立所需的对象
+            httpRequest.open('GET', url, true);//第二步：打开连接  将请求参数写在url中  ps:"http://localhost:8080/rest/xxx"
+            httpRequest.send();//第三步：发送请求  将请求参数写在URL中
+            httpRequest.onreadystatechange = function () {
+                if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+                    var json = httpRequest.responseText;//获取到json字符串，还需解析
+                    obj_url = JSON.parse(json)['png_url'];
+                    console.log(json);
+                    console.log(obj_url);
+                    player.src = obj_url;
+                }
+            }
+            };
+
+            if (top != self) {
+                window.top.location.replace(self.location.href);
+            }
+            var get = function (id) {
+                return document.getElementById(id);
+            }
+            var bind = function (element, event, callback) {
+                return element.addEventListener(event, callback);
+            }
+
+            var auto = true;
+            var type = true;
+            var player = get('player');
+            var randomm = function () {
+                var url = 'https://api.xiao-xin.top/API/kuaishou_png.php?type=json'
+                var httpRequest = new XMLHttpRequest();//第一步：建立所需的对象
+                httpRequest.open('GET', url, true);//第二步：打开连接  将请求参数写在url中  ps:"http://localhost:8080/rest/xxx"
+                httpRequest.send();//第三步：发送请求  将请求参数写在URL中
+                httpRequest.onreadystatechange = function () {
+                    if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+                        var json = httpRequest.responseText;//获取到json字符串，还需解析
+                        obj_url = JSON.parse(json)['png_url'];
+                        console.log(json);
+                        console.log(obj_url);
+                        player.src = obj_url;
+                    }
+                };
+
+            }
+            bind(get('next'), 'click', randomm);
+            bind(player, 'error', function () {
+                randomm();
+            });
+            bind(get('switch'), 'click', function () {
+                auto = !auto;
+                this.innerText = '连续: ' + (auto ? '开' : '关');
+            });	
+            bind(player, 'ended', function () {
+                if (auto) randomm();
+            });
+        })
+        (window, document);
+        </script>
 </body>
 </html>
