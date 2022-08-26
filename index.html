@@ -33,20 +33,20 @@
 
             window.onload=function(){
             var player = get('player');
-            var url = 'http://hc.baozi66.top:99/xjj.php?type=json'
-            var httpRequest = new XMLHttpRequest();//第一步：建立所需的对象
-            httpRequest.open('GET', url, true);//第二步：打开连接  将请求参数写在url中  ps:"http://localhost:8080/rest/xxx"
-            httpRequest.send();//第三步：发送请求  将请求参数写在URL中
-            httpRequest.onreadystatechange = function () {
-                if (httpRequest.readyState == 4 && httpRequest.status == 200) {
-                    var json = httpRequest.responseText;//获取到json字符串，还需解析
-                    obj_url = JSON.parse(json)['video_audio'];
-                    console.log(json);
-                    console.log(obj_url);
-                    player.src = obj_url;
-                }
-                player.play();
-            }
+            // var url = 'http://hc.baozi66.top:99/xjj.php?type=json'
+            // var httpRequest = new XMLHttpRequest();//第一步：建立所需的对象
+            // httpRequest.open('GET', url, true);//第二步：打开连接  将请求参数写在url中  ps:"http://localhost:8080/rest/xxx"
+            // httpRequest.send();//第三步：发送请求  将请求参数写在URL中
+            // httpRequest.onreadystatechange = function () {
+            //     if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+            //         var json = httpRequest.responseText;//获取到json字符串，还需解析
+            //         obj_url = JSON.parse(json)['video_audio'];
+            //         console.log(json);
+            //         console.log(obj_url);
+                    player.src = 'http://www.kuaidoushe.com/video.php';
+            //     }
+                 player.play();
+            // }
             };
 
             if (top != self) {
@@ -63,20 +63,20 @@
             var type = true;
             var player = get('player');
             var randomm = function () {
-                var url = 'http://hc.baozi66.top:99/xjj.php?type=json'
-                var httpRequest = new XMLHttpRequest();//第一步：建立所需的对象
-                httpRequest.open('GET', url, true);//第二步：打开连接  将请求参数写在url中  ps:"http://localhost:8080/rest/xxx"
-                httpRequest.send();//第三步：发送请求  将请求参数写在URL中
-                httpRequest.onreadystatechange = function () {
-                    if (httpRequest.readyState == 4 && httpRequest.status == 200) {
-                        var json = httpRequest.responseText;//获取到json字符串，还需解析
-                        obj_url = JSON.parse(json)['video_audio'];
-                        console.log(json);
-                        console.log(obj_url);
-                        player.src = obj_url;
-                        player.play();
-                    }
-                };
+                // var url = 'http://hc.baozi66.top:99/xjj.php?type=json'
+                // var httpRequest = new XMLHttpRequest();//第一步：建立所需的对象
+                // httpRequest.open('GET', url, true);//第二步：打开连接  将请求参数写在url中  ps:"http://localhost:8080/rest/xxx"
+                // httpRequest.send();//第三步：发送请求  将请求参数写在URL中
+                // httpRequest.onreadystatechange = function () {
+                //     if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+                //         var json = httpRequest.responseText;//获取到json字符串，还需解析
+                //         obj_url = JSON.parse(json)['video_audio'];
+                //         console.log(json);
+                //         console.log(obj_url);
+                         player.src = 'http://www.kuaidoushe.com/video.php';
+                         player.play();
+                //     }
+                // };
 
             }
             bind(get('next'), 'click', randomm);
