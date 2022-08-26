@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charSet="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Cache-Control" content="no-transform" /> 
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="referrer" content="never">
+    <meta name="renderer" content="webkit" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>小姐姐在线随机播放</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="http://q2.qlogo.cn/headimg_dl?dst_uin=2919408342&spec=100">
+</head>
+<body>
+    <section id="main">
+			 <video id="player" onload="loaded()" src="http://www.kuaidoushe.com/video.php" controls autoplay webkit-playsinline playsinline></video>	
+    </section>
+    <section id="buttons" >
+        <button id="switch">连续: 开</button>
+        <button id="next">next</button>
+        <a href="image.html"><button id="qh">图片</button></a>
+        <button id="next" >@DUSK.</button>
+	</a>
+    </section>
+   	 <!-- <script>
+
+        
+        (function (window, document) {
+
+            window.onload=function(){
+            var player = get('player');
+            var url = 'http://hc.baozi66.top:99/xjj.php?type=json'
+            var httpRequest = new XMLHttpRequest();//第一步：建立所需的对象
+            httpRequest.open('GET', url, true);//第二步：打开连接  将请求参数写在url中  ps:"http://localhost:8080/rest/xxx"
+            httpRequest.send();//第三步：发送请求  将请求参数写在URL中
+            httpRequest.onreadystatechange = function () {
+                if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+                    var json = httpRequest.responseText;//获取到json字符串，还需解析
+                    obj_url = JSON.parse(json)['video_audio'];
+                    console.log(json);
+                    console.log(obj_url);
+                    player.src = obj_url;
+                }
+                player.play();
+            }
+            };
+
+            if (top != self) {
+                window.top.location.replace(self.location.href);
+            }
+            var get = function (id) {
+                return document.getElementById(id);
+            }
+            var bind = function (element, event, callback) {
+                return element.addEventListener(event, callback);
+            }
+
+            var auto = true;
+            var type = true;
+            var player = get('player');
+            var randomm = function () {
+                var url = 'http://hc.baozi66.top:99/xjj.php?type=json'
+                var httpRequest = new XMLHttpRequest();//第一步：建立所需的对象
+                httpRequest.open('GET', url, true);//第二步：打开连接  将请求参数写在url中  ps:"http://localhost:8080/rest/xxx"
+                httpRequest.send();//第三步：发送请求  将请求参数写在URL中
+                httpRequest.onreadystatechange = function () {
+                    if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+                        var json = httpRequest.responseText;//获取到json字符串，还需解析
+                        obj_url = JSON.parse(json)['video_audio'];
+                        console.log(json);
+                        console.log(obj_url);
+                        player.src = obj_url;
+                        player.play();
+                    }
+                };
+
+            }
+            bind(get('next'), 'click', randomm);
+            bind(player, 'error', function () {
+                randomm();
+            });
+            bind(get('switch'), 'click', function () {
+                auto = !auto;
+                this.innerText = '连续: ' + (auto ? '开' : '关');
+            });	
+            bind(player, 'ended', function () {
+                if (auto) randomm();
+            });
+        })
+        (window, document);
+        </script> -->
+</body>
+</html>
